@@ -1,20 +1,23 @@
-package com.example.online_store;
+package com.example.online_store.Fragments;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.online_store.Login;
+import com.example.online_store.R;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class CartFragment extends Fragment {
+public class FragmentProfile extends Fragment {
 
 
-    public CartFragment() {
+    public FragmentProfile() {
         // Required empty public constructor
     }
 
@@ -23,7 +26,10 @@ public class CartFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_cart, container, false);
+        View view = inflater.inflate(R.layout.fragment_profile, container, false);
+        Intent intent = new Intent(getActivity(), Login.class);
+        startActivity(intent);
+        return view;
     }
 
 }

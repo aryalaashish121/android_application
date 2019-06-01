@@ -1,14 +1,14 @@
-package com.example.online_store;
+package com.example.online_store.Controller;
 
-import android.content.Intent;
-import android.os.Handler;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
+
+import com.example.online_store.Fragments.FragmentHome;
+import com.example.online_store.Fragments.FragmentProfile;
+import com.example.online_store.R;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -28,10 +28,9 @@ public class MainActivity extends AppCompatActivity {
 
 
         ViewPagerFragmentAdapter adapter = new ViewPagerFragmentAdapter(getSupportFragmentManager());
-        adapter.addFragment(new Fragment_Drashboard(),"Home");
-        adapter.addFragment(new FragmentLogin(),"Cart");
-        adapter.addFragment(new FragmentLogin(),"Message");
-        adapter.addFragment(new FragmentLogin(),"Account");
+        adapter.addFragment(new FragmentHome(),"Home");
+        adapter.addFragment(new FragmentProfile(),"Message");
+        adapter.addFragment(new FragmentProfile(),"Profile");
 
 
         viewPager.setAdapter(adapter);

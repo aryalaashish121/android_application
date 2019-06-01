@@ -1,4 +1,4 @@
-package com.example.online_store;
+package com.example.online_store.Fragments;
 
 
 import android.os.Bundle;
@@ -7,14 +7,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.online_store.R;
+
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class RegisterFragment extends Fragment {
+public class FragmentHome extends Fragment {
 
 
-    public RegisterFragment() {
+    public FragmentHome() {
         // Required empty public constructor
     }
 
@@ -23,7 +25,8 @@ public class RegisterFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_register, container, false);
+        View view = inflater.inflate(R.layout.fragment_home, container, false);
+        return view;
     }
 
 }
