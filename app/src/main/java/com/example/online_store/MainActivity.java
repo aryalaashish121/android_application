@@ -1,4 +1,4 @@
-package com.example.online_store.Controller;
+package com.example.online_store;
 
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.EditText;
 
+import com.example.online_store.Controller.ViewPagerFragmentAdapter;
 import com.example.online_store.Fragments.FragmentHome;
 import com.example.online_store.Fragments.FragmentProfile;
 import com.example.online_store.R;

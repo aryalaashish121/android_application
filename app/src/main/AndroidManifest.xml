@@ -9,8 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Register"></activity>
-        <activity android:name=".Login" />
+
         <activity
             android:name=".Splash_Screen"
             android:banner="@style/Theme.AppCompat.DayNight.NoActionBar"
@@ -22,8 +21,10 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Controller.MainActivity"
+            android:name=".MainActivity"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
+        <activity android:name=".Register"></activity>
+        <activity android:name=".Login" />
     </application>
 
 </manifest>

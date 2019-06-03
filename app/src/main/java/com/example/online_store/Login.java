@@ -9,7 +9,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.online_store.Fragments.FragmentHome;
 import com.example.online_store.Interface.UsersApi;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -70,7 +69,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
                 if (response.body().equals("login")) {
-                    Intent userdash = new Intent(Login.this, FragmentHome.class);
+                    Intent userdash = new Intent(Login.this, MainActivity.class);
                     startActivity(userdash);
                     Toast.makeText(Login.this, "Login Sucessful", Toast.LENGTH_SHORT).show();
                 }
