@@ -1,4 +1,4 @@
-package com.example.online_store;
+package com.example.onlinestore;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

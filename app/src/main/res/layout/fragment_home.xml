@@ -3,11 +3,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Fragments.FragmentHome"
+    tools:context="FragmentHome"
     android:background="@drawable/background"
     android:paddingTop="10dp"
-    android:paddingLeft="24dp"
-    android:paddingRight="24dp">
+    android:paddingLeft="4dp"
+    android:paddingRight="4dp">
 
     <ImageView
         android:id="@+id/displayProduct"
@@ -23,26 +23,26 @@
         android:layout_below="@id/displayProduct"
         android:padding="10dp">
 
-        <TextView
-            android:id="@+id/tv_flashSale_display"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Flash Sale"
-            android:cursorVisible="false"
-            android:textSize="18dp"
-            android:textStyle="italic"
-            android:textAlignment="gravity"
-            />
-        <TextView
-            android:id="@+id/tvflashshale_link"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="shop more>>"
-            android:cursorVisible="true"
-            android:layout_marginLeft="120dp"
-            android:textSize="18dp"
-            android:textStyle="italic"
-            android:textAlignment="gravity"/>
+        <!--<TextView-->
+            <!--android:id="@+id/tv_flashSale_display"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="Flash Sale"-->
+            <!--android:cursorVisible="false"-->
+            <!--android:textSize="18dp"-->
+            <!--android:textStyle="italic"-->
+            <!--android:textAlignment="gravity"-->
+            <!--/>-->
+        <!--<TextView-->
+            <!--android:id="@+id/tvflashshale_link"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="shop more>>"-->
+            <!--android:cursorVisible="true"-->
+            <!--android:layout_marginLeft="120dp"-->
+            <!--android:textSize="18dp"-->
+            <!--android:textStyle="italic"-->
+            <!--android:textAlignment="gravity"/>-->
     </LinearLayout>
 
     <RelativeLayout
@@ -50,67 +50,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/linearLayout_show_flash"
-        android:paddingTop="10dp"
-        android:paddingLeft="10dp">
+        android:paddingTop="10dp">
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/flash_sale_Recycler_view"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="match_parent"
         android:background="#E9BFBC"
         android:layout_marginTop="10dp"
         >
         </android.support.v7.widget.RecyclerView>
     </RelativeLayout>
-
-   <LinearLayout
-       android:id="@+id/linearLayout_show"
-       android:layout_width="match_parent"
-       android:layout_height="wrap_content"
-       android:orientation="horizontal"
-       android:layout_below="@id/relative_layout_flash_sale"
-       android:padding="10dp"
-       >
-
-       <TextView
-           android:id="@+id/tv_catagory_diplay"
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:text="Catagory"
-           android:cursorVisible="false"
-           android:textSize="18dp"
-           android:textStyle="italic"
-           android:textAlignment="gravity"
-           />
-       <TextView
-           android:id="@+id/tv_catagory"
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:text="shop more>>"
-           android:cursorVisible="true"
-           android:layout_marginLeft="120dp"
-           android:textSize="18dp"
-           android:textStyle="italic"
-           android:textAlignment="gravity"/>
-   </LinearLayout>
-
-    <RelativeLayout
-        android:id="@+id/relative_layout_catagory"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/linearLayout_show"
-
-        android:paddingLeft="10dp">
-
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/catagory_Recycler_view"
-            android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:background="#E9BFBC"
-            android:layout_marginTop="10dp"
-            >
-        </android.support.v7.widget.RecyclerView>
-    </RelativeLayout>
-
 
 </RelativeLayout>

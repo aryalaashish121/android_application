@@ -1,4 +1,4 @@
-package com.example.online_store;
+package com.example.onlinestore;
 
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
@@ -6,10 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.EditText;
 
-import com.example.online_store.Controller.ViewPagerFragmentAdapter;
-import com.example.online_store.Fragments.FragmentHome;
-import com.example.online_store.Fragments.FragmentProfile;
-import com.example.online_store.R;
+import com.example.onlinestore.Controller.ViewPagerFragmentAdapter;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -24,7 +21,6 @@ public class MainActivity extends AppCompatActivity {
 
         tabLayout = findViewById(R.id.tab_layout);
         viewPager = findViewById(R.id.view_pager);
-        search_tab = findViewById(R.id.search_tab);
 
 
 

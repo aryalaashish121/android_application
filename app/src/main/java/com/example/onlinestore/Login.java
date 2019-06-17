@@ -1,4 +1,4 @@
-package com.example.online_store;
+package com.example.onlinestore;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -9,7 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.online_store.Interface.UsersApi;
+import com.example.onlinestore.Interface.UsersApi;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -39,14 +39,14 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
     @Override
     public void onClick(View v) {
         if (v.getId() == R.id.btn_login) {
-            validation_Login();
+           // validation_Login();
             if (username.getText().toString().equals("admin") && password.getText().toString().equals("admin")) {
                 Intent adminlogin = new Intent(Login.this, Cart.class);
                 startActivity(adminlogin);
                 Toast.makeText(Login.this, "Welcome to Admin Dashboard!", Toast.LENGTH_SHORT).show();
             }
             else{
-                login();
+              //  login();
             }
 
         }

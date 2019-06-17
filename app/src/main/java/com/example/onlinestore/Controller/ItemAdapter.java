@@ -1,4 +1,4 @@
-package com.example.online_store.Controller;
+package com.example.onlinestore.Controller;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -11,15 +11,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.example.online_store.Model.ItemsDetail;
-import com.example.online_store.R;
+import com.example.onlinestore.Model.ItemsDetail;
+import com.example.onlinestore.R;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.List;
 
-public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolader> {
+public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder> {
     List<ItemsDetail> itemsDetailList;
     Context context;
     Bitmap bitmap;
@@ -32,15 +32,15 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolade
 
     @NonNull
     @Override
-    public ItemViewHolader onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+    public ItemViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         View itemView= LayoutInflater.from(viewGroup.getContext())
                 .inflate(R.layout.itemsample,viewGroup,false);
-        return new ItemViewHolader(itemView);
+        return new ItemViewHolder(itemView);
 
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ItemViewHolader itemViewHolader, int i) {
+    public void onBindViewHolder(@NonNull ItemViewHolder itemViewHolader, int i) {
 
         final ItemsDetail itemsDetail =itemsDetailList.get(i);
         itemViewHolader.itemName.setText(itemsDetail.getItemName());
@@ -81,11 +81,11 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolade
         return itemsDetailList.size();
     }
 
-    public class ItemViewHolader extends RecyclerView.ViewHolder {
+    public class ItemViewHolder extends RecyclerView.ViewHolder {
     public TextView itemName,itemPrice;
     public ImageView itemImage;
 
-        public ItemViewHolader(@NonNull View itemView) {
+        public ItemViewHolder(@NonNull View itemView) {
             super(itemView);
 
             itemName = itemView.findViewById(R.id.productName);

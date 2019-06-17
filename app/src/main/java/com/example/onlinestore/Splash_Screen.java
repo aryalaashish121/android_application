@@ -1,4 +1,4 @@
-package com.example.online_store;
+package com.example.onlinestore;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;

@@ -1,4 +1,4 @@
-package com.example.online_store;
+package com.example.onlinestore;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;

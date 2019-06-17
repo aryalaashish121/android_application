@@ -3,4 +3,10 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
+    <color name="button">#6176FA</color>
+    <color name="red">#FF0000</color>
+    <color name="morethanred">#EB5252</color>
+    <color name="product_desc_text_color">#B63B13</color>
+    <color name="text_color">#FFFEFE</color>
+    <color name="buynow">#D88123</color>
 </resources>

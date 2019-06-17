@@ -1,4 +1,4 @@
-package com.example.online_store.Fragments;
+package com.example.onlinestore;
 
 
 import android.content.Intent;
@@ -8,8 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.online_store.Login;
-import com.example.online_store.R;
+import com.example.onlinestore.R;
 
 /**
  * A simple {@link Fragment} subclass.

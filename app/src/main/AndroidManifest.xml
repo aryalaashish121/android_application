@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.online_store">
+    package="com.example.onlinestore">
 
     <application
         android:allowBackup="true"
@@ -11,7 +11,7 @@
         android:theme="@style/AppTheme">
 
         <activity
-            android:name=".Splash_Screen"
+            android:name="com.example.onlinestore.Splash_Screen"
             android:banner="@style/Theme.AppCompat.DayNight.NoActionBar"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
             <intent-filter>
@@ -20,11 +20,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".MainActivity"
+
+      <activity
+            android:name="com.example.onlinestore.MainActivity"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
-        <activity android:name=".Register"></activity>
-        <activity android:name=".Login" />
+        <activity android:name="com.example.onlinestore.Register"></activity>
+        <activity android:name="com.example.onlinestore.Login" />
     </application>
 
 </manifest>

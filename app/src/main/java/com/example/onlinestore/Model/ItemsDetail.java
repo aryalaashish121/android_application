@@ -1,4 +1,4 @@
-package com.example.online_store.Model;
+package com.example.onlinestore.Model;
 
 public class ItemsDetail {
    private String itemId;

@@ -1,4 +1,4 @@
-package com.example.online_store;
+package com.example.onlinestore;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -8,7 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.online_store.Interface.UsersApi;
+import com.example.onlinestore.Interface.UsersApi;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
