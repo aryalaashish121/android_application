@@ -7,6 +7,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.onlinestore.Interface.UsersApi;
@@ -23,6 +24,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
     EditText username, password;
     Button bt_login;
     UsersApi api;
+    TextView linkRegister;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,9 +33,11 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
 
         username = findViewById(R.id.username);
         password = findViewById(R.id.password);
+        linkRegister = findViewById(R.id.linkRegister);
 
         bt_login = findViewById(R.id.btn_login);
         bt_login.setOnClickListener(this);
+        linkRegister.setOnClickListener(this);
     }
 
     @Override
@@ -46,9 +50,14 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                 Toast.makeText(Login.this, "Welcome to Admin Dashboard!", Toast.LENGTH_SHORT).show();
             }
             else{
-              //  login();
+               login();
             }
 
+        }
+
+        if(v.getId() == R.id.linkRegister){
+            Intent register = new Intent(Login.this,Register.class);
+            startActivity(register);
         }
 
     }

@@ -1,16 +1,20 @@
 package com.example.onlinestore.Controller;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.StrictMode;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.example.onlinestore.ItemDescription;
 import com.example.onlinestore.Model.ItemsDetail;
 import com.example.onlinestore.R;
 import java.io.IOException;
@@ -44,7 +48,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder
 
         final ItemsDetail itemsDetail =itemsDetailList.get(i);
         itemViewHolader.itemName.setText(itemsDetail.getItemName());
-        itemViewHolader.itemPrice.setText("RS "+itemsDetail.getItemPrice());
+        itemViewHolader.itemPrice.setText("RS: "+itemsDetail.getItemPrice());
 
         StrictMode();
         String path = BASE_URL+"images/"+itemsDetail.getItemImage();
@@ -61,16 +65,17 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder
         itemViewHolader.itemImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 String destination_path = BASE_URL+"images/"+itemsDetail.getItemImage();
-//              //  Intent intent = new Intent(context, ItemDescription.class);
-//                intent.putExtra("itemName",itemsDetail.getItemName());
-//                intent.putExtra("itemPrice",itemsDetail.getItemPrice());
-//                intent.putExtra("itemImageName",destination_path);
-//                intent.putExtra("itemDescription",itemsDetail.getItemDescription());
-//                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//                Log.d("image", "onClick: "+itemsDetail.getItemImage());
-//
-//                context.startActivity(intent);
+                Intent itemDetails = new Intent(context, ItemDescription.class);
+                itemDetails.putExtra("itemName",itemsDetail.getItemName());
+                itemDetails.putExtra("itemPrice",itemsDetail.getItemPrice());
+                itemDetails.putExtra("itemImageName",destination_path);
+                itemDetails.putExtra("itemDescription",itemsDetail.getItemDescription());
+                itemDetails.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                Log.d("image", "onClick: "+itemsDetail.getItemImage());
+
+                context.startActivity(itemDetails);
             }
         });
 

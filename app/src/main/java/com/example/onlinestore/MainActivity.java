@@ -1,6 +1,7 @@
 package com.example.onlinestore;
 
 import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -23,10 +24,9 @@ public class MainActivity extends AppCompatActivity {
         viewPager = findViewById(R.id.view_pager);
 
 
-
         ViewPagerFragmentAdapter adapter = new ViewPagerFragmentAdapter(getSupportFragmentManager());
         adapter.addFragment(new FragmentHome(),"Home");
-        adapter.addFragment(new FragmentProfile(),"Message");
+        adapter.addFragment(new FragmentCategory(),"Category");
         adapter.addFragment(new FragmentProfile(),"Profile");
 
 

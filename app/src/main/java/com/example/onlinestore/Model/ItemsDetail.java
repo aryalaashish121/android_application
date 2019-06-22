@@ -1,18 +1,9 @@
 package com.example.onlinestore.Model;
 
 public class ItemsDetail {
-   private String itemId;
     private String itemName,itemDescription,itemImage;
     private String itemPrice;
 
-//
-//    public int getItemId() {
-//        return itemId;
-//    }
-//
-//    public void setItemId(int itemId) {
-//        this.itemId = itemId;
-//    }
 
     public String getItemName() {
         return itemName;
@@ -47,8 +38,8 @@ public class ItemsDetail {
         this.itemPrice = itemPrice;
     }
 
-    public ItemsDetail(String itemId, String itemName, String itemDescription, String itemImage, String itemPrice) {
-         this.itemId = itemId;
+    public ItemsDetail(String itemName, String itemDescription, String itemImage, String itemPrice) {
+
         this.itemName = itemName;
         this.itemDescription = itemDescription;
         this.itemImage = itemImage;

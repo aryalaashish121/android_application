@@ -3,6 +3,8 @@ package com.example.onlinestore;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.ViewPager;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -10,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.example.onlinestore.Controller.ImageSlideAdapter;
 import com.example.onlinestore.Controller.ItemAdapter;
 import com.example.onlinestore.Interface.ItemsApi;
 import com.example.onlinestore.Interface.UsersApi;
@@ -33,7 +36,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class FragmentHome extends Fragment {
         RecyclerView recyclerView;
         UsersApi api;
-
+        ViewPager slider;
     public FragmentHome() {
         // Required empty public constructor
     }
@@ -45,11 +48,18 @@ public class FragmentHome extends Fragment {
         // Inflate the layout for this fragment
 
         final View view = inflater.inflate(R.layout.fragment_home, container, false);
+        ViewPager mViewPager = (ViewPager) view.findViewById(R.id.slidingImage);
+        ImageSlideAdapter adapterView = new ImageSlideAdapter(this.getActivity());
+        mViewPager.setAdapter(adapterView);
+
+
         recyclerView = view.findViewById(R.id.flash_sale_Recycler_view);
-        ItemAdapter adapter = new ItemAdapter();
-        recyclerView.setAdapter(adapter);
-        recyclerView.setLayoutManager(new GridLayoutManager(getActivity(),2));
+        RecyclerView.ItemDecoration itemDecoration = new
+                DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL);
+        recyclerView.addItemDecoration(itemDecoration);
+        recyclerView.setLayoutManager(new GridLayoutManager(getContext(),2));
         loadProducts();
+
         return view;
     }
     public void loadProducts(){
@@ -67,16 +77,16 @@ public class FragmentHome extends Fragment {
             @Override
             public void onResponse(Call<List<ItemsDetail>> call, Response<List<ItemsDetail>> response) {
                 if(!response.isSuccessful()) {
-                    Toast.makeText(getActivity(), "Error", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "Error", Toast.LENGTH_LONG).show();
                 }
                 List<ItemsDetail> itemsDetails = response.body();
-                Toast.makeText(getActivity(), "Body "+response.body(), Toast.LENGTH_SHORT).show();
-                recyclerView.setAdapter(new ItemAdapter(itemsDetails,getActivity()));
+                Toast.makeText(getActivity(), "Body "+response.body(), Toast.LENGTH_LONG).show();
+                recyclerView.setAdapter(new ItemAdapter(itemsDetails,getContext()));
             }
 
             @Override
             public void onFailure(Call<List<ItemsDetail>> call, Throwable t) {
-                Toast.makeText(getActivity(), "Error "+t.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "Error "+t.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
     }
