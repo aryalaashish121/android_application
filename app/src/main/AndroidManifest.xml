@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.onlinestore">
-<uses-permission android:name="android.permission.INTERNET"></uses-permission>
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/app"
@@ -10,17 +12,17 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-
-        <activity android:name="com.example.onlinestore.Register"></activity>
-        <activity android:name="com.example.onlinestore.Login"></activity>
-        <activity android:name="com.example.onlinestore.MainActivity"></activity>
-        <activity android:name="com.example.onlinestore.ItemDescription"></activity>
-
+        <activity android:name=".Product"></activity>
+        <activity android:name=".Register" />
+        <activity android:name=".Login" />
+        <activity android:name=".MainActivity" />
+        <activity android:name=".ItemDescription" />
         <activity
-            android:name="com.example.onlinestore.Splash_Screen"
+            android:name=".Splash_Screen"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

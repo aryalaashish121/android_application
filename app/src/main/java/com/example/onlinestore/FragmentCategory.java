@@ -1,5 +1,6 @@
 package com.example.onlinestore;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -38,6 +39,8 @@ public class FragmentCategory extends Fragment implements View.OnClickListener{
             @Override
             public void onClick(View v) {
                 Toast.makeText(getActivity(), "This one is laptop", Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(getActivity(),Product.class);
+                startActivity(intent);
             }
         });
         return view;
