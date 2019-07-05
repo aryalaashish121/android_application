@@ -59,7 +59,7 @@ tools:context="com.example.onlinestore.UpdateProfile">
                         android:id="@+id/userName"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Please Enter User Name"
+                        android:hint="User Name"
                         android:imeOptions="actionNext"
                         android:textColorHint="@color/colorPrimary" />
 
@@ -91,10 +91,9 @@ tools:context="com.example.onlinestore.UpdateProfile">
                         android:id="@+id/city"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Please Enter User Name"
+                        android:hint="City"
                         android:imeOptions="actionNext"
                         android:textColorHint="@color/colorPrimary" />
-
                 </android.support.design.widget.TextInputLayout>
 
                 <android.support.design.widget.TextInputLayout
@@ -106,7 +105,7 @@ tools:context="com.example.onlinestore.UpdateProfile">
                         android:id="@+id/postal"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Please Enter User Name"
+                        android:hint="Postal code"
                         android:imeOptions="actionNext"
                         android:textColorHint="@color/colorPrimary" />
 
@@ -118,10 +117,10 @@ tools:context="com.example.onlinestore.UpdateProfile">
                     android:textColorHint="@color/colorPrimary">
 
                     <EditText
-                        android:id="@+id/address1"
+                        android:id="@+id/userAddress1"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Please Enter User Name"
+                        android:hint="Address Line 1"
                         android:imeOptions="actionNext"
                         android:textColorHint="@color/colorPrimary" />
 
@@ -133,13 +132,12 @@ tools:context="com.example.onlinestore.UpdateProfile">
                     android:textColorHint="@color/colorPrimary">
 
                     <EditText
-                        android:id="@+id/address2"
+                        android:id="@+id/userAddress2"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Please Enter User Name"
+                        android:hint="Address Line 2"
                         android:imeOptions="actionNext"
                         android:textColorHint="@color/colorPrimary" />
-
                 </android.support.design.widget.TextInputLayout>
 
                 <Button
@@ -173,10 +171,16 @@ tools:context="com.example.onlinestore.UpdateProfile">
                 android:layout_alignParentTop="true"
                 android:layout_alignEnd="@+id/updateuserprofile"
                 android:layout_marginTop="10dp"
-                android:id="@+id/floatingActionButton"
+                android:id="@+id/editprofile"
                 android:layout_alignRight="@+id/updateuserprofile" />
 
         </RelativeLayout>
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/userImageName"
+            />
 
 
     </RelativeLayout>

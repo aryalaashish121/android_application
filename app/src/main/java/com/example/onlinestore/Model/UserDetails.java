@@ -8,26 +8,26 @@ public class UserDetails {
     private String userImage;
     private String city;
     private String postal;
-    private String address1;
-    private String address2;
+    private String userAddress1;
+    private String userAddress2;
 
-    public UserDetails( String userName, String userEmail, String userPassword, String userImage, String city, String postal, String address1, String address2) {
-
+    public UserDetails(String _id, String userName, String userEmail, String userPassword, String userImage, String city, String postal, String userAddress1, String userAddress2) {
+        this._id = _id;
         this.userName = userName;
         this.userEmail = userEmail;
         this.userPassword = userPassword;
         this.userImage = userImage;
         this.city = city;
         this.postal = postal;
-        this.address1 = address1;
-        this.address2 = address2;
+        this.userAddress1 = userAddress1;
+        this.userAddress2 = userAddress2;
     }
 
-    public String getUserid() {
+    public String get_id() {
         return _id;
     }
 
-    public void setUserid(String _id) {
+    public void set_id(String _id) {
         this._id = _id;
     }
 
@@ -79,19 +79,19 @@ public class UserDetails {
         this.postal = postal;
     }
 
-    public String getAddress1() {
-        return address1;
+    public String getUserAddress1() {
+        return userAddress1;
     }
 
-    public void setAddress1(String address1) {
-        this.address1 = address1;
+    public void setUserAddress1(String userAddress1) {
+        this.userAddress1 = userAddress1;
     }
 
-    public String getAddress2() {
-        return address2;
+    public String getUserAddress2() {
+        return userAddress2;
     }
 
-    public void setAddress2(String address2) {
-        this.address2 = address2;
+    public void setUserAddress2(String userAddress2) {
+        this.userAddress2 = userAddress2;
     }
 }
