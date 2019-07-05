@@ -1,11 +1,13 @@
 package com.example.onlinestore;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.onlinestore.Interface.UsersApi;
@@ -19,22 +21,31 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class Register extends AppCompatActivity implements View.OnClickListener {
-    EditText fname,lname,username,password,cpassword;
+EditText name,email,password,cpassword,city,postal,address1,address2;
     Button bt_signup;
     UsersApi usersApi;
+    TextView linkLogin;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-        fname = findViewById(R.id.input_Fname);
-        lname = findViewById(R.id.input_Lname);
-        username = findViewById(R.id.input_username);
-        password = findViewById(R.id.input_password);
-        cpassword = findViewById(R.id.input_cpassword);
+        name = findViewById(R.id.input_Name);
+        email = findViewById(R.id.input_Email);
+        password = findViewById(R.id.input_Password);
+        cpassword = findViewById(R.id.input_Cpassword);
+        city = findViewById(R.id.city);
+        postal = findViewById(R.id.postal);
+        address1 = findViewById(R.id.input_address1);
+        address2 = findViewById(R.id.input_address2);
+        linkLogin = findViewById(R.id.linkLogin);
+
+
         bt_signup = findViewById(R.id.btn_signup);
+        String userimage="image here";
 
         bt_signup.setOnClickListener(this);
+        linkLogin.setOnClickListener(this);
     }
 
     private void createInstance(){
@@ -52,10 +63,11 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
         if (v.getId()==R.id.btn_signup){
             validation_Registration();
             createInstance();
-            Call<String> usersCall = usersApi.registerUser(fname.getText().toString(),lname.getText().toString(), username.getText().toString(),password.getText().toString());
+            Call<String> usersCall = usersApi.registerUser(name.getText().toString(),email.getText().toString(), password.getText().toString(),"userimage",city.getText().toString(),postal.getText().toString(),address1.getText().toString(),address2.getText().toString());
             usersCall.enqueue(new Callback<String>() {
                 @Override
                 public void onResponse(Call<String> call, Response<String> response) {
+                    Toast.makeText(Register.this, "data"+response.body(), Toast.LENGTH_SHORT).show();
                     Toast.makeText(Register.this,"Registration Successful!",Toast.LENGTH_LONG).show();
                 }
 
@@ -67,6 +79,10 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
             });
 
         }
+        else if(v.getId()==R.id.linkLogin){
+            Intent login = new Intent(Register.this,Login.class);
+            startActivity(login);
+        }
     }
     public void validation_Registration(){
         if (TextUtils.isEmpty(password.getText().toString()))
@@ -76,7 +92,7 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
         }
         if (TextUtils.isEmpty(cpassword.getText().toString()))
         {
-            cpassword.setError("Please enter username");
+            cpassword.setError("Please Confirm your Password");
             cpassword.requestFocus();
         }
         if(password.getText().toString().length()<8){
@@ -89,20 +105,20 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
             password.requestFocus();
             cpassword.requestFocus();
         }
-        if (TextUtils.isEmpty(username.getText().toString()))
-        {
-            username.setError("Please enter username");
-            username.requestFocus();
-        }
-        if(TextUtils.isEmpty(fname.getText().toString()))
-        {
-            fname.setError("Please enter password");
-            fname.requestFocus();
-        }
-        if (TextUtils.isEmpty(lname.getText().toString()))
-        {
-            lname.setError("Please enter username");
-            lname.requestFocus();
-        }
+//        if (TextUtils.isEmpty(username.getText().toString()))
+//        {
+//            username.setError("Please enter username");
+//            username.requestFocus();
+//        }
+//        if(TextUtils.isEmpty(fname.getText().toString()))
+//        {
+//            fname.setError("Please enter password");
+//            fname.requestFocus();
+//        }
+//        if (TextUtils.isEmpty(lname.getText().toString()))
+//        {
+//            lname.setError("Please enter username");
+//            lname.requestFocus();
+//        }
     }
 }

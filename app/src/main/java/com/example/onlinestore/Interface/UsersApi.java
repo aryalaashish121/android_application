@@ -13,15 +13,15 @@ import retrofit2.http.POST;
 public interface UsersApi {
 
     @FormUrlEncoded
-    @POST("register_user")
-    Call<String> registerUser(@Field("fname") String first_name, @Field("lname") String last_name, @Field("username") String username, @Field("password") String password);
+    @POST("user/userRegistration")
+    Call<String> registerUser(@Field("userName") String name, @Field("userEmail") String email, @Field("userPassword") String password,@Field("userImage") String userImage, @Field("city") String city, @Field("postal") String postal, @Field("userAddress1") String address1, @Field("userAddress2") String address2);
 
 
     @FormUrlEncoded
-    @POST("loginUser")
-    Call<String> userVerification(@Field("username") String username, @Field("password") String password);
+    @POST("user/userLogin")
+    Call<String> userVerification(@Field("userEmail") String username, @Field("userPassword") String password);
 
-    @GET("/getItems")
+    @GET("product/displayAllProduct")
     Call<List<ItemsDetail>> getItemDetail();
 
 }

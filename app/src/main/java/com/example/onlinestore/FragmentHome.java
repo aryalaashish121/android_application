@@ -72,7 +72,7 @@ public class FragmentHome extends Fragment {
                 .build();
         api = retrofit.create(UsersApi.class);
 
-        Call<List<ItemsDetail>> listCall= api.getItemDetail();
+        final Call<List<ItemsDetail>> listCall= api.getItemDetail();
         listCall.enqueue(new Callback<List<ItemsDetail>>() {
             @Override
             public void onResponse(Call<List<ItemsDetail>> call, Response<List<ItemsDetail>> response) {
@@ -80,7 +80,7 @@ public class FragmentHome extends Fragment {
                     Toast.makeText(getActivity(), "Error", Toast.LENGTH_LONG).show();
                 }
                 List<ItemsDetail> itemsDetails = response.body();
-                Toast.makeText(getActivity(), "Body "+response.body(), Toast.LENGTH_LONG).show();
+                Toast.makeText(getActivity(), "Body "+itemsDetails, Toast.LENGTH_LONG).show();
                 recyclerView.setAdapter(new ItemAdapter(itemsDetails,getContext()));
             }
 

@@ -1,9 +1,11 @@
 package com.example.onlinestore;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -31,8 +33,8 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        username = findViewById(R.id.username);
-        password = findViewById(R.id.password);
+        username = findViewById(R.id.input_email);
+        password = findViewById(R.id.input_password);
         linkRegister = findViewById(R.id.linkRegister);
 
         bt_login = findViewById(R.id.btn_login);
@@ -44,14 +46,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
     public void onClick(View v) {
         if (v.getId() == R.id.btn_login) {
            // validation_Login();
-            if (username.getText().toString().equals("admin") && password.getText().toString().equals("admin")) {
-                Intent adminlogin = new Intent(Login.this, Cart.class);
-                startActivity(adminlogin);
-                Toast.makeText(Login.this, "Welcome to Admin Dashboard!", Toast.LENGTH_SHORT).show();
-            }
-            else{
-               login();
-            }
+           login();
 
         }
 
@@ -61,6 +56,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         }
 
     }
+
     private void createInstance(){
         Gson gson = new GsonBuilder()
                 .setLenient()

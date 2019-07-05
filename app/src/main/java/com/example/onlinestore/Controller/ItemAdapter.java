@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.onlinestore.ItemDescription;
 import com.example.onlinestore.Model.ItemsDetail;
@@ -47,11 +48,11 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder
     public void onBindViewHolder(@NonNull ItemViewHolder itemViewHolader, int i) {
 
         final ItemsDetail itemsDetail =itemsDetailList.get(i);
-        itemViewHolader.itemName.setText(itemsDetail.getItemName());
-        itemViewHolader.itemPrice.setText("RS: "+itemsDetail.getItemPrice());
+        itemViewHolader.itemName.setText(itemsDetail.getProductName());
+        itemViewHolader.itemPrice.setText("RS: "+itemsDetail.getProductPrice());
 
         StrictMode();
-        String path = BASE_URL+"images/"+itemsDetail.getItemImage();
+        String path = BASE_URL+itemsDetail.getMainImage();
         try {
             URL url = new URL(path);
             bitmap = BitmapFactory.decodeStream((InputStream)url.getContent());
@@ -65,17 +66,18 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder
         itemViewHolader.itemImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                String destination_path = BASE_URL+"images/"+itemsDetail.getItemImage();
+                Context newcontext = v.getContext();
+                Toast.makeText(context, "product name"+itemsDetail.getProductName(), Toast.LENGTH_SHORT).show();
+                String destination_path = BASE_URL+itemsDetail.getMainImage();
                 Intent itemDetails = new Intent(context, ItemDescription.class);
-                itemDetails.putExtra("itemName",itemsDetail.getItemName());
-                itemDetails.putExtra("itemPrice",itemsDetail.getItemPrice());
+                itemDetails.putExtra("itemName",itemsDetail.getProductName());
+                itemDetails.putExtra("itemPrice",itemsDetail.getProductPrice());
                 itemDetails.putExtra("itemImageName",destination_path);
-                itemDetails.putExtra("itemDescription",itemsDetail.getItemDescription());
+                itemDetails.putExtra("itemDescription",itemsDetail.getProductDescription());
                 itemDetails.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                Log.d("image", "onClick: "+itemsDetail.getItemImage());
+                Log.d("image", "onClick: "+itemsDetail.getMainImage());
 
-                context.startActivity(itemDetails);
+                newcontext.startActivity(itemDetails);
             }
         });
 
@@ -92,7 +94,6 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder
 
         public ItemViewHolder(@NonNull View itemView) {
             super(itemView);
-
             itemName = itemView.findViewById(R.id.productName);
             itemPrice= itemView.findViewById(R.id.productPrie);
             itemImage = itemView.findViewById(R.id.productImage);
