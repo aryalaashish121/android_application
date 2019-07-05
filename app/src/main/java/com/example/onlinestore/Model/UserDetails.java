@@ -11,8 +11,8 @@ public class UserDetails {
     private String address1;
     private String address2;
 
-    public UserDetails(String _id, String userName, String userEmail, String userPassword, String userImage, String city, String postal, String address1, String address2) {
-        this._id = _id;
+    public UserDetails( String userName, String userEmail, String userPassword, String userImage, String city, String postal, String address1, String address2) {
+
         this.userName = userName;
         this.userEmail = userEmail;
         this.userPassword = userPassword;

@@ -89,13 +89,10 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                preferences = (Login.this).getSharedPreferences("UserData",0);
                editor = preferences.edit();
               Tokenauth res = response.body();
-//               Toast.makeText(Login.this, ",here", Toast.LENGTH_SHORT).show();
-
-//               editor.putString("token",res.getToken());
-//               editor.putString("userid",res.getUsers().get
-//               Userid());
+              Toast.makeText(Login.this, ",Logged in", Toast.LENGTH_SHORT).show();
                editor.putString("token",res.getToken());
                editor.putString("uid",res.getUsers().getUserid());
+               Toast.makeText(Login.this, "userid displayed: "+res.getUsers().getUserid(), Toast.LENGTH_SHORT).show();
                editor.commit();
 
                Toast.makeText(Login.this, "Logged in"+response.body().getToken(), Toast.LENGTH_SHORT).show();

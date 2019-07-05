@@ -12,6 +12,7 @@ import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.Part;
+import retrofit2.http.Path;
 
 public interface UsersApi {
 
@@ -27,11 +28,11 @@ public interface UsersApi {
     @GET("product/displayAllProduct")
     Call<List<ItemsDetail>> getItemDetail();
 
-    @GET("product/displayProduct/:id")
+    @GET("product/displayProduct/{pid}")
     Call<List<ItemsDetail>> getSpecificProduct();
 
-    @GET("getUserById/{id}")
-    Call<UserDetails> profiledata(@Part("userid") String userid);
+    @GET("user/getUserById/{id}")
+    Call<UserDetails> profiledata(@Path("id") String userid);
 
 }
 
