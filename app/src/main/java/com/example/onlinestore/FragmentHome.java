@@ -1,15 +1,19 @@
 package com.example.onlinestore;
 
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.StaggeredGridLayoutManager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.onlinestore.Controller.ImageSlideAdapter;
@@ -37,6 +41,7 @@ public class FragmentHome extends Fragment {
         RecyclerView recyclerView;
         UsersApi api;
         ViewPager slider;
+        ImageView userimage,logout,user_profile_name,user_profile_email;
     public FragmentHome() {
         // Required empty public constructor
     }
@@ -57,7 +62,10 @@ public class FragmentHome extends Fragment {
         RecyclerView.ItemDecoration itemDecoration = new
                 DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL);
         recyclerView.addItemDecoration(itemDecoration);
-        recyclerView.setLayoutManager(new GridLayoutManager(getContext(),2));
+        recyclerView.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
+        SharedPreferences preferences=getActivity().getSharedPreferences("UserData",0);
+        String token=preferences.getString("token",null);
+//        Log.d("token",token
         loadProducts();
 
         return view;

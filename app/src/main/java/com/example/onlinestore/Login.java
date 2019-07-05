@@ -2,6 +2,7 @@ package com.example.onlinestore;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -13,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.onlinestore.Interface.UsersApi;
+import com.example.onlinestore.Model.Tokenauth;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -27,11 +29,14 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
     Button bt_login;
     UsersApi api;
     TextView linkRegister;
+    SharedPreferences preferences;
+    SharedPreferences.Editor editor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
 
         username = findViewById(R.id.input_email);
         password = findViewById(R.id.input_password);
@@ -41,6 +46,8 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         bt_login.setOnClickListener(this);
         linkRegister.setOnClickListener(this);
     }
+
+
 
     @Override
     public void onClick(View v) {
@@ -69,24 +76,42 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
     }
     public void login() {
         createInstance();
-        Call<String> checkUSer = api.userVerification(username.getText().toString(), password.getText().toString());
-        checkUSer.enqueue(new Callback<String>() {
-            @Override
-            public void onResponse(Call<String> call, Response<String> response) {
-                if (response.body().equals("login")) {
-                    Intent userdash = new Intent(Login.this, MainActivity.class);
-                    startActivity(userdash);
-                    Toast.makeText(Login.this, "Login Sucessful", Toast.LENGTH_SHORT).show();
-                }
+        Call<Tokenauth> checkUSer = api.userVerification(username.getText().toString(), password.getText().toString());
+       checkUSer.enqueue(new Callback<Tokenauth>() {
+           @Override
+           public void onResponse(Call<Tokenauth> call, Response<Tokenauth> response) {
+              if(!response.isSuccessful()){
+                  Toast.makeText(Login.this, "Not sucessful"+response.code(), Toast.LENGTH_SHORT).show();
+                  return;
 
-            }
+              }
+              
+               preferences = (Login.this).getSharedPreferences("UserData",0);
+               editor = preferences.edit();
+              Tokenauth res = response.body();
+//               Toast.makeText(Login.this, ",here", Toast.LENGTH_SHORT).show();
 
-            @Override
-            public void onFailure(Call<String> call, Throwable t) {
-                Toast.makeText(Login.this, "Login Denied!", Toast.LENGTH_SHORT).show();
+//               editor.putString("token",res.getToken());
+//               editor.putString("userid",res.getUsers().get
+//               Userid());
+               editor.putString("token",res.getToken());
+               editor.putString("uid",res.getUsers().getUserid());
+               editor.commit();
 
-            }
-        });
+               Toast.makeText(Login.this, "Logged in"+response.body().getToken(), Toast.LENGTH_SHORT).show();
+
+//               Intent intent = new Intent(Login.this,MainActivity.class);
+//               startActivity(intent);
+//               finish();
+           }
+
+           @Override
+           public void onFailure(Call<Tokenauth> call, Throwable t) {
+
+               Toast.makeText(Login.this, "Error 0"+t.getMessage(), Toast.LENGTH_SHORT).show();
+           }
+       });
+
     }
     public void validation_Login() {
         if (TextUtils.isEmpty(username.getText().toString())) {
@@ -98,5 +123,12 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         }
     }
 
+    @Override
+    public void onBackPressed() {
+
+        Toast.makeText(this, "You havenot Logged in Yet.", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(Login.this,MainActivity.class);
+        startActivity(intent);
+    }
 
 }

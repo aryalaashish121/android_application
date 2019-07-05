@@ -8,7 +8,9 @@ import retrofit2.Call;
 import retrofit2.http.GET;
 
 public interface ItemsApi {
-//
-//    @GET("product/getItems")
-//    Call<List<ItemsDetail>> getItemDetail();
+    @GET("product/displayAllProduct")
+    Call<List<ItemsDetail>> getItemDetail();
+
+    @GET("product/displayProduct/:id")
+    Call<List<ItemsDetail>> getSpecificProduct();
 }

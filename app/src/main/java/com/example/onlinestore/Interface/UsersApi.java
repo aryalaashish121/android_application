@@ -1,6 +1,8 @@
 package com.example.onlinestore.Interface;
 
 import com.example.onlinestore.Model.ItemsDetail;
+import com.example.onlinestore.Model.Tokenauth;
+import com.example.onlinestore.Model.UserDetails;
 
 import java.util.List;
 
@@ -9,6 +11,7 @@ import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.Part;
 
 public interface UsersApi {
 
@@ -19,10 +22,16 @@ public interface UsersApi {
 
     @FormUrlEncoded
     @POST("user/userLogin")
-    Call<String> userVerification(@Field("userEmail") String username, @Field("userPassword") String password);
+    Call<Tokenauth> userVerification(@Field("username") String username, @Field("password") String password);
 
     @GET("product/displayAllProduct")
     Call<List<ItemsDetail>> getItemDetail();
+
+    @GET("product/displayProduct/:id")
+    Call<List<ItemsDetail>> getSpecificProduct();
+
+    @GET("getUserById/{id}")
+    Call<UserDetails> profiledata(@Part("userid") String userid);
 
 }
 

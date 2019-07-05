@@ -22,7 +22,7 @@
         <TextView
             android:id="@+id/productName"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="250px"
             android:textSize="20dp"
             android:layout_below="@+id/productImage"
             android:paddingBottom="8dp"

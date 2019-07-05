@@ -56,7 +56,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="Check your bank activities"
+                    android:text="Check only Laptops"
                     android:padding="5dp"
                     android:textColor="@android:color/darker_gray"/>
 
@@ -96,7 +96,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="Check your bank activities"
+                    android:text="Check only Desktops"
                     android:padding="5dp"
                     android:textColor="@android:color/darker_gray"/>
 
@@ -143,7 +143,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="Check your bank activities"
+                    android:text="Check only Hardware's"
                     android:padding="5dp"
                     android:textColor="@android:color/darker_gray"/>
 
@@ -188,7 +188,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:padding="5dp"
-                    android:text="Check your bank activities"
+                    android:text="Check only Software's"
                     android:textColor="@android:color/darker_gray" />
 
             </LinearLayout>
@@ -234,7 +234,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="Check your bank activities"
+                    android:text="Check only Accessories"
                     android:padding="5dp"
                     android:textColor="@android:color/darker_gray"/>
 
