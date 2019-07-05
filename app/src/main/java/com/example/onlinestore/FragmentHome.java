@@ -80,7 +80,7 @@ public class FragmentHome extends Fragment {
                     Toast.makeText(getActivity(), "Error", Toast.LENGTH_LONG).show();
                 }
                 List<ItemsDetail> itemsDetails = response.body();
-                Toast.makeText(getActivity(), "Body "+itemsDetails, Toast.LENGTH_LONG).show();
+//                Toast.makeText(getActivity(), "Body "+itemsDetails, Toast.LENGTH_LONG).show();
                 recyclerView.setAdapter(new ItemAdapter(itemsDetails,getContext()));
             }
 
