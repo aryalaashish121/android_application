@@ -41,6 +41,12 @@
             android:textColor="@color/text_color"
             android:textAlignment="center"
             android:layout_below="@+id/itemName"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/price"
+        android:id="@+id/placeorder"
+        android:text="Place Order "/>
 
 <ScrollView
     android:layout_width="match_parent"
@@ -53,9 +59,9 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/price"
         android:textColor="@color/product_desc_text_color"
-        android:textSize="20dp"
+        android:textSize="14dp"
         android:layout_centerHorizontal="true"
-        android:textAlignment="center"
+        android:textAlignment="gravity"
         />
 </ScrollView>
 

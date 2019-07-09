@@ -1,7 +1,11 @@
 package com.example.onlinestore;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -11,6 +15,8 @@ public class ItemDescription extends AppCompatActivity {
 
     TextView iPrice,iName,iDesc;
     ImageView iImage;
+    Button placeorder;
+    Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +27,18 @@ public class ItemDescription extends AppCompatActivity {
         iPrice = findViewById(R.id.price);
         iName = findViewById(R.id.itemName);
         iDesc = findViewById(R.id.itemDescription);
+        placeorder = findViewById(R.id.placeorder);
+
+        placeorder.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent itemDetails = new Intent(ItemDescription.this, ItemDescription.class);
+            //    itemDetails.putExtra("itemName",itemsDetail.getProductName());
+
+                itemDetails.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            }
+        });
+
 
         Bundle bundle = getIntent().getExtras();
         if(bundle!=null){
