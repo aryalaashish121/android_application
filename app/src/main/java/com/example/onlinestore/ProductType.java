@@ -1,11 +1,13 @@
 package com.example.onlinestore;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.widget.ShareActionProvider;
 import android.widget.Toast;
 
 import com.example.onlinestore.Controller.ItemAdapter;
@@ -25,6 +27,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class ProductType extends AppCompatActivity {
     RecyclerView recyclerProduct;
     UsersApi api;
+    SharedPreferences preferences1;
+    SharedPreferences.Editor editor;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,7 +55,7 @@ public class ProductType extends AppCompatActivity {
         api = retrofit.create(UsersApi.class);
 
         //calling shared preferences...............
-        SharedPreferences preferences=(ProductType.this).getSharedPreferences("productType",0);
+        final SharedPreferences preferences=(ProductType.this).getSharedPreferences("productType",0);
         String productBYtype = preferences.getString("product_type",null);
 
         Call<List<ItemsDetail>> listCall= api.getSpecificProduct(productBYtype);
@@ -64,6 +68,11 @@ public class ProductType extends AppCompatActivity {
                 List<ItemsDetail> itemsDetails = response.body();
                 Toast.makeText(ProductType.this, "Body "+response.body(), Toast.LENGTH_LONG).show();
                 recyclerProduct.setAdapter(new ItemAdapter(itemsDetails, ProductType.this));
+
+//                preferences1 = (ProductType.this).getSharedPreferences("productType",0);
+//                editor = preferences1.edit();
+//                editor.putString("product_type","");
+//                editor.commit();
             }
 
             @Override
@@ -72,4 +81,6 @@ public class ProductType extends AppCompatActivity {
             }
         });
     }
+
+
 }

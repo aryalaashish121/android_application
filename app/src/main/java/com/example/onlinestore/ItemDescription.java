@@ -32,8 +32,8 @@ public class ItemDescription extends AppCompatActivity {
         placeorder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent itemDetails = new Intent(ItemDescription.this, ItemDescription.class);
-            //    itemDetails.putExtra("itemName",itemsDetail.getProductName());
+                Intent itemDetails = new Intent(ItemDescription.this, Order.class);
+               //itemDetails.putExtra("itemName",);
 
                 itemDetails.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             }

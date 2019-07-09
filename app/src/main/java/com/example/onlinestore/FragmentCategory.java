@@ -45,7 +45,7 @@ public class FragmentCategory extends Fragment implements View.OnClickListener{
                 String pt = "laptop";
                 preferences = (getContext()).getSharedPreferences("productType",0);
                 editor = preferences.edit();
-                editor.putString("product_type","software");
+                editor.putString("product_type",pt);
                 editor.commit();
                 Intent intent = new Intent(getActivity(),ProductType.class);
                 startActivity(intent);
