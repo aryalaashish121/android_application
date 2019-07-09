@@ -47,6 +47,8 @@ public class FragmentProfile extends Fragment {
     //api
     UsersApi usersApi;
 
+
+
     public FragmentProfile() {
         // Required empty public constructor
     }
@@ -111,8 +113,8 @@ public class FragmentProfile extends Fragment {
             public void onResponse(Call<UserDetails> call, Response<UserDetails> response) {
                 UserDetails userdetails = response.body();
 
-                username.setText(userdetails.getUserName());
-                useremail.setText(userdetails.getUserEmail());
+               username.setText(userdetails.getUserName());
+               useremail.setText(userdetails.getUserEmail());
                 StrictMode();
                 try{
                     String imgurl = BASE_URL+userdetails.getUserImage();

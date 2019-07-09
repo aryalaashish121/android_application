@@ -32,7 +32,7 @@ public interface UsersApi {
     Call<List<ItemsDetail>> getItemDetail();
 
     @GET("product/displayProduct/{id}")
-    Call<List<ItemsDetail>> getSpecificProduct();
+    Call<List<ItemsDetail>> getSpecificProduct(@Path("id") String id);
 
     @GET("user/getUserById/{id}")
     Call<UserDetails> profiledata(@Path("id") String userid);

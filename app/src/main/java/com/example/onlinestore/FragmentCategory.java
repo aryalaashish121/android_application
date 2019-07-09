@@ -1,6 +1,7 @@
 package com.example.onlinestore;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -17,6 +18,9 @@ import android.widget.Toast;
 public class FragmentCategory extends Fragment implements View.OnClickListener{
 
     LinearLayout layoutLaptop,layoutDesktop,layoutAccessories,layoutHardware,layoutSoftware;
+    //preferences
+    SharedPreferences preferences;
+    SharedPreferences.Editor editor;
 
     public FragmentCategory() {
         // Required empty public constructor
@@ -37,9 +41,62 @@ public class FragmentCategory extends Fragment implements View.OnClickListener{
 
         layoutLaptop.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                Toast.makeText(getActivity(), "This one is laptop", Toast.LENGTH_LONG).show();
-                Intent intent = new Intent(getActivity(),Product.class);
+            public void onClick(View view) {
+                String pt = "laptop";
+                preferences = (getContext()).getSharedPreferences("productType",0);
+                editor = preferences.edit();
+                editor.putString("product_type","software");
+                editor.commit();
+                Intent intent = new Intent(getActivity(),ProductType.class);
+                startActivity(intent);
+            }
+        });
+        layoutDesktop.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String pt = "desktop";
+                preferences = (getContext()).getSharedPreferences("productType",0);
+                editor = preferences.edit();
+                editor.putString("product_type",pt);
+                editor.commit();
+                Intent intent = new Intent(getActivity(),ProductType.class);
+                startActivity(intent);
+            }
+        });
+        layoutAccessories.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String pt = "accessories";
+                preferences = (getContext()).getSharedPreferences("productType",0);
+                editor = preferences.edit();
+                editor.putString("product_type",pt);
+                editor.commit();
+                Intent intent = new Intent(getActivity(),ProductType.class);
+                startActivity(intent);
+            }
+        });
+        layoutHardware.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String pt = "hardware";
+                preferences = (getContext()).getSharedPreferences("productType",0);
+                editor = preferences.edit();
+                editor.putString("product_type",pt);
+                editor.commit();
+                Intent intent = new Intent(getActivity(),ProductType.class);
+                startActivity(intent);
+            }
+        });
+        layoutSoftware.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String pt = "software";
+                preferences = (getContext()).getSharedPreferences("productType",0);
+                editor = preferences.edit();
+                editor.putString("product_type",pt);
+                editor.commit();
+
+                Intent intent = new Intent(getActivity(),ProductType.class);
                 startActivity(intent);
             }
         });
@@ -48,21 +105,21 @@ public class FragmentCategory extends Fragment implements View.OnClickListener{
 
     @Override
     public void onClick(View v) {
-//
-//        if(v.getId()==R.id.linearLaptop){
-//            Toast.makeText(getActivity(), "This one is laptop", Toast.LENGTH_LONG).show();
-//        }
-        if(v.getId()==R.id.linearDesktop){
-            Toast.makeText(getActivity(), "Desktop", Toast.LENGTH_LONG).show();
-        }
-        if(v.getId()==R.id.linearHardware){
-            Toast.makeText(getActivity(), "Hardware", Toast.LENGTH_LONG).show();
-        }
-        if(v.getId()==R.id.linearSoftware){
-            Toast.makeText(getActivity(), "Software", Toast.LENGTH_LONG).show();
-        }
-        if(v.getId()==R.id.linearAccessories){
-            Toast.makeText(getActivity(), "Accessories", Toast.LENGTH_LONG).show();
-        }
-    }
+        switch (v.getId()) {
+            case R.id.linearLaptop:{
+                String pt = "laptop";
+                preferences = (getContext()).getSharedPreferences("productType",0);
+                editor = preferences.edit();
+                editor.putString("product_type","software");
+                editor.commit();
+
+                Toast.makeText(getActivity(), "This one is laptop", Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(getActivity(),ProductType.class);
+                startActivity(intent);
+            }
+            case R.id.linearHardware: {
+                Toast.makeText(getActivity(), "This one is hardware", Toast.LENGTH_SHORT).show();
+            }
+        }}
+
 }

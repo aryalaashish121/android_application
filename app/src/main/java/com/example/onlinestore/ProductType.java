@@ -1,8 +1,8 @@
 package com.example.onlinestore;
 
 import android.content.SharedPreferences;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -22,13 +22,13 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class Product extends AppCompatActivity {
+public class ProductType extends AppCompatActivity {
     RecyclerView recyclerProduct;
     UsersApi api;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_product);
+        setContentView(R.layout.activity_product_type);
 
         recyclerProduct = findViewById(R.id.recycler_product);
         RecyclerView.ItemDecoration itemDecoration = new
@@ -38,6 +38,7 @@ public class Product extends AppCompatActivity {
 
 
         loadProducts();
+
     }
     public void loadProducts(){
         Gson gson = new GsonBuilder()
@@ -49,25 +50,25 @@ public class Product extends AppCompatActivity {
                 .build();
         api = retrofit.create(UsersApi.class);
 
-        Call<List<ItemsDetail>> listCall= api.getItemDetail();
+        //calling shared preferences...............
+        SharedPreferences preferences=(ProductType.this).getSharedPreferences("productType",0);
+        String productBYtype = preferences.getString("product_type",null);
+
+        Call<List<ItemsDetail>> listCall= api.getSpecificProduct(productBYtype);
         listCall.enqueue(new Callback<List<ItemsDetail>>() {
             @Override
             public void onResponse(Call<List<ItemsDetail>> call, Response<List<ItemsDetail>> response) {
                 if(!response.isSuccessful()) {
-                    Toast.makeText(Product.this, "Error", Toast.LENGTH_LONG).show();
+                    Toast.makeText(ProductType.this, "Error", Toast.LENGTH_LONG).show();
                 }
                 List<ItemsDetail> itemsDetails = response.body();
-                SharedPreferences preferences=(Product.this).getSharedPreferences("productType",0);
-                String productBYtype = preferences.getString("product_type",null);
-                //loadProducts();
-                Toast.makeText(Product.this, "product type "+productBYtype, Toast.LENGTH_LONG).show();
-                //Toast.makeText(Product.this, "Body "+response.body(), Toast.LENGTH_LONG).show();
-                recyclerProduct.setAdapter(new ItemAdapter(itemsDetails,Product.this));
+                Toast.makeText(ProductType.this, "Body "+response.body(), Toast.LENGTH_LONG).show();
+                recyclerProduct.setAdapter(new ItemAdapter(itemsDetails, ProductType.this));
             }
 
             @Override
             public void onFailure(Call<List<ItemsDetail>> call, Throwable t) {
-                Toast.makeText(Product.this, "Error "+t.getMessage(), Toast.LENGTH_LONG).show();
+                Toast.makeText(ProductType.this, "Error "+t.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
     }

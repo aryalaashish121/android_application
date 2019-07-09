@@ -16,7 +16,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".UpdateProfile"></activity>
+        <activity android:name=".ProductType"></activity>
+        <activity android:name=".UpdateProfile" />
         <activity android:name=".Product" />
         <activity android:name=".Register" />
         <activity android:name=".Login" />
