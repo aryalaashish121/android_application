@@ -42,6 +42,9 @@ public class FragmentHome extends Fragment {
         UsersApi api;
         ViewPager slider;
         ImageView userimage,logout,user_profile_name,user_profile_email;
+
+
+
     public FragmentHome() {
         // Required empty public constructor
     }

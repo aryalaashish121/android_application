@@ -2,7 +2,9 @@ package com.example.onlinestore;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
 import android.os.StrictMode;
 import android.os.Vibrator;
 import android.support.v7.app.AppCompatActivity;
@@ -19,6 +21,7 @@ import com.example.onlinestore.Interface.UsersApi;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import BroadcastReceiver.BroadcastReceiver;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -29,6 +32,8 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
     TextView linkRegister;
     SharedPreferences preferences;
     SharedPreferences.Editor editor;
+
+    BroadcastReceiver broadcastExample = new BroadcastReceiver(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -127,4 +132,16 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         StrictMode.setThreadPolicy(policy);
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        IntentFilter intentFilter=new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
+        registerReceiver(broadcastExample,intentFilter);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        unregisterReceiver(broadcastExample);
+    }
 }

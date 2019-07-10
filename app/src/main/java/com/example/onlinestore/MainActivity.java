@@ -1,21 +1,24 @@
 package com.example.onlinestore;
 
-import android.content.Intent;
+import android.content.BroadcastReceiver;
+import android.os.Bundle;
 import android.support.design.widget.TabLayout;
-import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.widget.EditText;
 import android.widget.Toast;
-
 import com.example.onlinestore.Controller.ViewPagerFragmentAdapter;
 
+
+
 public class MainActivity extends AppCompatActivity {
+
+
 
     private ViewPager viewPager;
     private TabLayout tabLayout;
     private EditText search_tab;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,4 +45,6 @@ public class MainActivity extends AppCompatActivity {
         Toast.makeText(this, "Bye Bye: We wil be waiting for you! ", Toast.LENGTH_SHORT).show();
         finish();
     }
+
+
 }
