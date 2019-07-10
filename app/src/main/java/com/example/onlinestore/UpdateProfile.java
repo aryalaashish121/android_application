@@ -1,13 +1,19 @@
 package com.example.onlinestore;
 
+import android.Manifest;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -48,6 +54,7 @@ public class UpdateProfile extends AppCompatActivity implements View.OnClickList
     FloatingActionButton editprofileButton;
     public static final String BASE_URL = "http://10.0.2.2:3000/";
     private static final int PICK_IMAGE = 1;
+    private static final int CAPTURE_IMG = 2;
 
     Bitmap bitmap;
     Uri imageUri;
@@ -84,7 +91,28 @@ public class UpdateProfile extends AppCompatActivity implements View.OnClickList
             updateUser();
         }
         else if(view.getId()==R.id.editprofile){
-            Opengallery();
+            checkPermission();
+            AlertDialog.Builder builder=new AlertDialog.Builder(UpdateProfile.this);
+            builder.setTitle("Choose an option");
+
+            String[] options={"Open Camera","Choose from gallery"};
+            builder.setItems(options, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    switch (which){
+                        case 0: //for camera
+                            Intent openCamera=new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                            startActivityForResult(openCamera,CAPTURE_IMG);
+                            break;
+
+                        case 1://for gallery
+                            Opengallery();
+                            break;
+                    }
+                }
+            });
+            AlertDialog dialog=builder.create();
+            dialog.show();
         }
     }
     private void loaduserdata(){
@@ -240,5 +268,13 @@ public class UpdateProfile extends AppCompatActivity implements View.OnClickList
         }
     }
 
+    private void checkPermission()
+    {
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED)
+        {
+            ActivityCompat.requestPermissions(this,new String[]
+                    {Manifest.permission.CAMERA,Manifest.permission.WRITE_EXTERNAL_STORAGE},0);
+        }
+    }
 
 }
