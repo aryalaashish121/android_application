@@ -70,6 +70,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder
                 Toast.makeText(context, "product name"+itemsDetail.getProductName(), Toast.LENGTH_SHORT).show();
                 String destination_path = BASE_URL+itemsDetail.getMainImage();
                 Intent itemDetails = new Intent(context, ItemDescription.class);
+                itemDetails.putExtra("itemID",itemsDetail.get_id());
                 itemDetails.putExtra("itemName",itemsDetail.getProductName());
                 itemDetails.putExtra("itemPrice",itemsDetail.getProductPrice());
                 itemDetails.putExtra("itemImageName",destination_path);

@@ -15,20 +15,18 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class UserLoginBBL {
     UsersApi usersApi;
+
     public static String token;
     public static String userid;
 
     CreateInstance createInstance;
     private String userEmail;
     private String userPassword;
-    public Response<Tokenauth> tokenauthResponse;
+    private String _id;
+    public static Tokenauth authtoken;
 
-    public UserLoginBBL(String userEmail, String userPassword) {
-        this.userEmail = userEmail;
-        this.userPassword = userPassword;
-    }
-
-    public Response<Tokenauth> checkLogin(){
+    public boolean checkUser(String userEmail, String userPassword) {
+        boolean isloggedin = false;
         Gson gson = new GsonBuilder()
                 .setLenient()
                 .create();
@@ -38,15 +36,21 @@ public class UserLoginBBL {
                 .build();
         usersApi = retrofit.create(UsersApi.class);
 
-        Call<Tokenauth> tokenauthCall = usersApi.userVerification(userEmail,userPassword);
+        Call<Tokenauth> usercall = usersApi.userVerification(userEmail,userPassword);
         try{
-            tokenauthResponse = tokenauthCall.execute();
+            Response<Tokenauth> loginResponse = usercall.execute();
+            if(!loginResponse.body().getToken().isEmpty()){
+               token = loginResponse.body().getToken();
+               userid = loginResponse.body().getUsers().get_id();
+               isloggedin=true;
+            }
+
 
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return tokenauthResponse;
-    }
+        return isloggedin;
 
+    }
 
 }

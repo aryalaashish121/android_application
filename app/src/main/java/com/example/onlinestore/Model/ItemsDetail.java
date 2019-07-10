@@ -4,8 +4,9 @@ public class ItemsDetail {
     private String productType,productBrand,productWarranty,productColor,productName,productWeight,productDescription;
     private Number productQuantity,productPrice,productDiscount;
     private String mainImage,auxiliaryImage;
+    private String _id;
 
-    public ItemsDetail(String productType, String productBrand, String productWarranty, String productColor, String productName, String productWeight, String productDescription, Number productQuantity, Number productPrice, Number productDiscount, String mainImage, String auxiliaryImage) {
+    public ItemsDetail(String productType, String productBrand, String productWarranty, String productColor, String productName, String productWeight, String productDescription, Number productQuantity, Number productPrice, Number productDiscount, String mainImage, String auxiliaryImage, String _id) {
         this.productType = productType;
         this.productBrand = productBrand;
         this.productWarranty = productWarranty;
@@ -18,6 +19,7 @@ public class ItemsDetail {
         this.productDiscount = productDiscount;
         this.mainImage = mainImage;
         this.auxiliaryImage = auxiliaryImage;
+        this._id = _id;
     }
 
     public String getProductType() {
@@ -114,5 +116,13 @@ public class ItemsDetail {
 
     public void setAuxiliaryImage(String auxiliaryImage) {
         this.auxiliaryImage = auxiliaryImage;
+    }
+
+    public String get_id() {
+        return _id;
+    }
+
+    public void set_id(String _id) {
+        this._id = _id;
     }
 }

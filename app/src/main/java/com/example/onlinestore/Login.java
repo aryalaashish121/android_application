@@ -10,6 +10,7 @@ import android.os.Vibrator;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -106,24 +107,27 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
     }
 
     public void login(){
-        final UserLoginBBL userLoginBBL= new UserLoginBBL(username.getText().toString(), password.getText().toString());
+        String userEmail = username.getText().toString();
+        String userPassword = password.getText().toString();
+        UserLoginBBL loginBBL = new UserLoginBBL();
+
         StrictMode();
-        if(userLoginBBL.checkLogin()!=null){
+        if (loginBBL.checkUser(userEmail,userPassword)){
             preferences = (Login.this).getSharedPreferences("UserData",0);
                editor = preferences.edit();
             Toast.makeText(Login.this, ",Logged in", Toast.LENGTH_SHORT).show();
             vibration_Mobile(500);
 
-                  editor.putString("token", userLoginBBL.checkLogin().body().getToken());
-                  editor.putString("uid", userLoginBBL.checkLogin().body().get_id());
-
+                  editor.putString("token", loginBBL.token);
+                  editor.putString("uid", loginBBL.userid);
                   editor.commit();
-
-                  Toast.makeText(Login.this, "Logged in" + userLoginBBL.checkLogin().body().getToken(), Toast.LENGTH_SHORT).show();
-
                   Intent intent = new Intent(Login.this, MainActivity.class);
                   startActivity(intent);
                   finish();
+        }
+        else{
+            Toast.makeText(Login.this,"ERROR",Toast.LENGTH_LONG).show();
+            vibration_Mobile(500);
         }
     }
 

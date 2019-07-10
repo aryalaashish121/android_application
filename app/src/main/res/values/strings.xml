@@ -14,4 +14,11 @@
     <string name="action_new">Settings</string>
     <string name="logo_desc">App logo</string>
     <string name="country_name">Nigeria</string>
+
+    <string-array name="locations">
+        <item>Naxal</item>
+        <item>T.I.A</item>
+        <item>Lakeside, Pokhara</item>
+        <item>Suryabinayak, Bhaktapur</item>
+    </string-array>
 </resources>
