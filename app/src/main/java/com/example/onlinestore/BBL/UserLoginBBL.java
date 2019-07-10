@@ -15,6 +15,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class UserLoginBBL {
     UsersApi usersApi;
+    public static String token;
+    public static String userid;
 
     CreateInstance createInstance;
     private String userEmail;
