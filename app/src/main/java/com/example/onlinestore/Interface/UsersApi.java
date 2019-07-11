@@ -1,13 +1,18 @@
 package com.example.onlinestore.Interface;
 
 import com.example.onlinestore.Model.ItemsDetail;
+import com.example.onlinestore.Model.OrderModel;
+import com.example.onlinestore.Model.RegisterModel;
 import com.example.onlinestore.Model.Tokenauth;
 import com.example.onlinestore.Model.UserDetails;
 
+import java.sql.Time;
+import java.util.Date;
 import java.util.List;
 
 import okhttp3.MultipartBody;
 import retrofit2.Call;
+import retrofit2.http.Body;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
@@ -44,5 +49,10 @@ public interface UsersApi {
     @Multipart
     @POST("uploadUserImage")
     Call<String> uploadImage(@Part MultipartBody.Part body);
+
+    @FormUrlEncoded
+    @POST("order/addOrders")
+    Call<String> addOrders(@Field("productID") String productID, @Field("userID") String userID, @Field("orderedDate")Date orderedDate, @Field("Quantity") Integer Quantity, @Field("orderedTime")String orderedTime);
+
 }
 

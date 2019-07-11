@@ -45,7 +45,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ItemViewHolder itemViewHolader, int i) {
+    public void onBindViewHolder(@NonNull final ItemViewHolder itemViewHolader, int i) {
 
         final ItemsDetail itemsDetail =itemsDetailList.get(i);
         itemViewHolader.itemName.setText(itemsDetail.getProductName());
@@ -72,7 +72,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder
                 Intent itemDetails = new Intent(context, ItemDescription.class);
                 itemDetails.putExtra("itemID",itemsDetail.get_id());
                 itemDetails.putExtra("itemName",itemsDetail.getProductName());
-                itemDetails.putExtra("itemPrice",itemsDetail.getProductPrice());
+                itemDetails.putExtra("itemPrice",itemViewHolader.itemPrice.getText().toString());
                 itemDetails.putExtra("itemImageName",destination_path);
                 itemDetails.putExtra("itemDescription",itemsDetail.getProductDescription());
                 itemDetails.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

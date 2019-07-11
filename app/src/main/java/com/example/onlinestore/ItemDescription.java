@@ -41,8 +41,8 @@ public class ItemDescription extends AppCompatActivity {
                 String userID = preferences.getString("uid",null);
                 Bundle bundle = getIntent().getExtras();
                 String productID = bundle.getString("itemID");
-                String productName = bundle.getString("productName");
-                String ProductPrice = bundle.getString("productPrice");
+                String productName = bundle.getString("itemName");
+                String ProductPrice = bundle.getString("itemPrice");
 
                 orders.putExtra("userID",userID);
                 orders.putExtra("productID",productID);
