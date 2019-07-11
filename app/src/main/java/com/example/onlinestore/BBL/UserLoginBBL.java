@@ -31,7 +31,7 @@ public class UserLoginBBL {
                 .setLenient()
                 .create();
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://10.0.2.2:3000/")
+                .baseUrl("http://172.26.0.26:3000/")
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .build();
         usersApi = retrofit.create(UsersApi.class);

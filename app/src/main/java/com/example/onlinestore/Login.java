@@ -132,8 +132,8 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
     }
 
     public void StrictMode(){
-        StrictMode.ThreadPolicy policy=new StrictMode.ThreadPolicy.Builder().permitAll().build();
-        StrictMode.setThreadPolicy(policy);
+        android.os.StrictMode.ThreadPolicy policy=new android.os.StrictMode.ThreadPolicy.Builder().permitAll().build();
+        android.os.StrictMode.setThreadPolicy(policy);
     }
 
     @Override
