@@ -14,12 +14,12 @@ Some of the aims regarding to project are:
 
 1.2	Objectives
 Some of the main objective regarding to project are:
-•	To design a user friendly online shopping platform.
-•	To develop a general purpose e-commerce where products can be bought from the comfort of home through internet.
-•	To test the application where that fulfills all the necessities and listed requirements.
-•	To document the final report of process which provides easiness during project updates.
-•	To improve the efficiency of the application developed.
-•	To provide access to up-to date products available in the market.
+1.	To design a user friendly online shopping platform.
+2.	To develop a general purpose e-commerce where products can be bought from the comfort of home through internet.
+3.To test the application where that fulfills all the necessities and listed requirements.
+4.To document the final report of process which provides easiness during project updates.
+5.To improve the efficiency of the application developed.
+6. To provide access to up-to date products available in the market.
  
 2.	Main Features
 •	Able to view the catalog and choose the product customer interest.
@@ -40,6 +40,7 @@ https://github.com/stw300cem/stw300cem-final-project-aryalaashish121.git
 Backend API :
 https://github.com/aryalaashish121/STW300CEM_Android_Applications_Development_DB_BackEnd.git
 4.	YouTube Video Link
+https://www.youtube.com/watch?v=WKd4NFPzt34
 
 
 5.	REST CLIENT
